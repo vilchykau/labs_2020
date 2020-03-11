@@ -2,48 +2,49 @@
 #include <algorithm>
 #include <string>
 
-template<bool is_number, typename T>
-struct PreValue;
+template<typename T = int>
+struct Info{
+	Info(T v,int l) :length(l), value(v){}
+	Info(T v) :length(1), value(v) {}
+	Info():length(0), value(0){}
 
-template<typename T>
-struct PreValue<true, T> {
-	PreValue(const T& value, int len):value(value), len(len){}
+	int length;
 	T value;
-	int len;
 };
 
-template<typename T>
-struct PreValue<false, T> {
-	PreValue(const T& value, int len) :value(value), len(-1) {}
-	int value = 0;
-	int len = -1;
-};
-
-template<typename T>
-decltype(auto) MakePreValue(const T& value, int len = 1) {
-	return PreValue<std::is_arithmetic<T>::value, T>{value, len};
-}
-
-template<typename T>
-decltype(auto) FMaxLenPlatform(const T& t) {
-	return MakePreValue(t);
+auto FMaxLenPlatform(int& m) {
+	m = 0;
+	return Info<int>{};
 }
 
 template<typename T, typename ...Args>
-decltype(auto) FMaxLenPlatform(const T& t, Args... args) {
-	auto next_len = FMaxLenPlatform(args...);
-	auto now_container = FMaxLenPlatform(t);
-	if (next_len.len != -1 && now_container.len != -1) {
-		if (next_len.value == now_container.value) {
-			return MakePreValue(t, next_len.len + 1);
+auto FMaxLenPlatform(int& m, const T& t, Args... args) {
+	if constexpr (std::is_arithmetic_v<T> == true) {
+		auto next = FMaxLenPlatform(m, args...);
+		if (next.value == t) {
+			next.length++;
+			m = std::max<int>(m, next.length);
+			return Info<T>{t, next.length};
+		}
+		else {
+			return Info<T>{t};
 		}
 	}
-	return MakePreValue(t);
+	else {
+		FMaxLenPlatform(m, args...);
+		return Info<int>{};
+	}
 }
 
+template<typename T, typename ...Args>
+int FMaxLenPlatform_M(const T& t, Args... args) {
+	int m;
+	FMaxLenPlatform(m, t, args...);
+	return m;
+}
 
 int main() {
-	std::cout << FMaxLenPlatform(1, 1, 4, std::string("FF"), 5, 6).len;
-	
+	auto max = FMaxLenPlatform_M(1, 1, 1, 1, std::string("FF"), 5, 5, 5, 6);
+	std::cout << max;
 	return 0;	
 }
