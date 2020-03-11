@@ -29,5 +29,8 @@
     <ClInclude Include="CMin.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="Complex.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

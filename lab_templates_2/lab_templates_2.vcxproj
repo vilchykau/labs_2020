@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="CAbs.h" />
     <ClInclude Include="CMin.h" />
+    <ClInclude Include="Complex.h" />
     <ClInclude Include="CSqrt.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

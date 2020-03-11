@@ -1,10 +1,11 @@
 ﻿#include <iostream>
 #include <cmath>
-
+#include <complex>
 //--------------
 #include "CSqrt.h"
 #include "CAbs.h"
 #include "CMin.h"
+#include "Complex.h"
 //--------
 
 
@@ -19,19 +20,10 @@ struct SqRoots
 };
 
 
+
 int main()
 {
-
-    __asm {
-        mov rax, 1
-    };
-    constexpr int root = cRoot<63>();
-    std::cout << root << std::endl;
-    using qus = SqRoots<1, -5, 6>;
-
-    constexpr auto a = CMin(CAbs(qus::x1), CAbs(qus::x2));
-   // int arr[a];
-
-    std::cout << a;
+    constexpr int root = cRoot<81>();
+    std::cout << root << "   " << std::endl;
     return 0;
 }
