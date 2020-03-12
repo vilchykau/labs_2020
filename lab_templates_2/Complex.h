@@ -23,7 +23,7 @@ struct complex {
 		return { rl + other, im};
 	}
 	constexpr complex operator-(double other) const {
-		return { rl + other, im };
+		return { rl - other, im };
 	}
 
 	constexpr complex operator/(double d) const {
