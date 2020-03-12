@@ -2,28 +2,23 @@
 #include <cmath>
 #include <complex>
 //--------------
-#include "CSqrt.h"
-#include "CAbs.h"
-#include "CMin.h"
+#include "Math.h"
 #include "Complex.h"
 //--------
 
-
-
-template<int a, int b, int c>
-struct SqRoots
-{
-    enum {
-        x1 = (-b - cRoot<b * b - 4 * a * c>()) / (2 * a),
-        x2 = (-b + cRoot<b * b - 4 * a * c>()) / (2 * a),
-    };
-};
-
-
+constexpr complex_pair findRoots(double a, double b, double c) {
+    const complex_pair D = _root(complex{ b * b, 0 } -4 * a * c);
+    return { (-b + D.first) / (2 * a), (-b + D.second) / (2 * a) };
+}
 
 int main()
 {
-    constexpr int root = cRoot<81>();
-    std::cout << root << "   " << std::endl;
+    constexpr complex_pair ss = findRoots(1, -5, 6);
+    constexpr int min_abs_root = _min(_abs(ss.first), _abs(ss.second));
+
+    int a[min_abs_root];
+
+    std::cout << sizeof(a)/sizeof(int);
+
     return 0;
-}
+} 

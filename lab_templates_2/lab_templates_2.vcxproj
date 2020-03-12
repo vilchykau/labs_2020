@@ -152,10 +152,8 @@
     <ClCompile Include="lab_templates_2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CAbs.h" />
-    <ClInclude Include="CMin.h" />
     <ClInclude Include="Complex.h" />
-    <ClInclude Include="CSqrt.h" />
+    <ClInclude Include="Math.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

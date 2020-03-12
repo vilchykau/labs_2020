@@ -1,33 +1,46 @@
 #pragma once
 
-#include "CSqrt.h"
-#include "CAbs.h"
-#include <type_traits>
+#include <tuple>
+#include <iostream>
 
-template<int a, int b = 0>
-struct Complex {
-	enum {
-		rl = a,
-		im = b,
-		abs = cRoot<Sqr(a) + Sqr(b)>()
-	};
+struct complex;
+
+using complex_pair = std::pair<complex, complex>;
+
+struct complex {
+	const double rl;
+	const double im;
+
+	constexpr complex operator+(const complex& other) const {
+		return { rl + other.rl, im + other.im };
+	}
+
+	constexpr complex operator-(const complex& other) const {
+		return { rl - other.rl, im - other.im };
+	}
+
+	constexpr complex operator+(double other) const {
+		return { rl + other, im};
+	}
+	constexpr complex operator-(double other) const {
+		return { rl + other, im };
+	}
+
+	constexpr complex operator/(double d) const {
+		return { rl / d, im / d };
+	}
 };
 
-template<typename Complex1, typename Complex2>
-struct ComplexSum
-{
-	using value = Complex<Complex1::rl + Complex2::rl, Complex1::im + Complex2::im>;
-};
+constexpr complex operator+(double other, const complex& c) {
+	return { c.rl + other, c.im };
+}
 
-template<typename Complex1, typename Complex2>
-struct ComplexSub
-{
-	using value = Complex<Complex1::rl - Complex2::rl, Complex1::im - Complex2::im>;
-};
+constexpr complex operator-(double other, const complex& c) {
+	return {other - c.rl, c.im };
+}
 
-template<int value>
-struct ComplexRoot {
-	using value_1 = std::conditional_t<(value >= 0), Complex<cRoot<value>()>, Complex<0, cRoot<Abs<value>::value>()>>;
-	using value_2 = std::conditional_t<(value >= 0), Complex<-cRoot<value>()>, Complex<0, -cRoot<Abs<value>::value>()>>;
-};
+std::ostream& operator<<(std::ostream& os, const complex& com) {
+	std::cout << "c(" << com.rl << ',' << com.im << ")";
+	return os;
+}
 
