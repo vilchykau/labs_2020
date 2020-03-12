@@ -1,6 +1,4 @@
 ﻿#include <iostream>
-#include <cmath>
-#include <complex>
 //--------------
 #include "Math.h"
 #include "Complex.h"
