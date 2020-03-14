@@ -19,4 +19,12 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <MASM Include="test_func.asm">
+      <Filter>Исходные файлы</Filter>
+    </MASM>
+    <MASM Include="calc_start_values.asm">
+      <Filter>Исходные файлы</Filter>
+    </MASM>
+  </ItemGroup>
 </Project>

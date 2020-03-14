@@ -3,15 +3,15 @@
 
 #include <iostream>
 
-uint32_t formula(uint32_t n, uint32_t m) {
-
-
-    return 0;
+int a() {
+    return 2;
 }
+
+extern "C" int test_func(int f0, int f1, int f2, int n, int x);
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::cout << test_func(1, 4, 6, 2, 1);
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
