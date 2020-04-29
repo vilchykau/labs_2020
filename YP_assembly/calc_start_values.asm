@@ -4,9 +4,6 @@
 
 calc_stat_values proc
 
-push ebp
-mov ebp, esp
-
 ; f2 = ebp+16
 ; f1 = ebp+12
 ; f0 = ebp+8
@@ -27,9 +24,13 @@ sub ecx, eax; substract f2_v*f0(eax) from f1
 mov dword ptr[ebp+12], ecx; save result to f1
 ;......................................................
 
+mov eax, dword ptr [ebp+16]   ; move f2_v to eax
+imul dword ptr[ebp+12]         ; multiply f2_v(eax) by f1_v(ebp-8)
+mov ecx, dword ptr[ebp+8]     ; move f0(ebp+8) to ecx
+sub ecx, eax                  ; substract f2_v*f1_v(eax) from f0(ebp+8)
+mov dword ptr[ebp+8], ecx     ; save result to f0_v
+;...............................................................
 
-
-pop ebp
 
 calc_stat_values endp
 end

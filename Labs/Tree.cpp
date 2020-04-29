@@ -88,10 +88,10 @@ void Tree::erase(int aVal) {
 	delete p;
 }
 
-bool Tree::Length(KTNode* p, int& h) {
+bool Tree::Length(KTNode* p, int& radius) {
 	if (!p)
 	{
-		h = 0;
+		radius = 0;
 		return 1;
 
 	}
@@ -100,7 +100,7 @@ bool Tree::Length(KTNode* p, int& h) {
 		int right;
 		const bool left_code = Length(p->left, left);
 		const bool right_code = Length(p->right, right);
-		h = max(left, right) + 1;
+		radius = max(left, right) + 1;
 		if (left == right && left_code && right_code)
 		{
 			return 1;
@@ -109,8 +109,8 @@ bool Tree::Length(KTNode* p, int& h) {
 	}
 }
 bool Tree::Length() {
-	int h;
-	return Length(fRoot, h);
+	int radius;
+	return Length(fRoot, radius);
 }
 
 istream& operator>>(istream& in, Tree& t) {

@@ -36,15 +36,16 @@ auto FMaxLenPlatform(int& m, const T& t, Args... args) {
 	}
 }
 
-template<typename T, typename ...Args>
-int FMaxLenPlatform_M(const T& t, Args... args) {
+template<typename ...Args>
+int FMaxLenPlatform_M(Args... args) {
 	int m;
-	FMaxLenPlatform(m, t, args...);
+	FMaxLenPlatform(m, args...);
 	return m;
 }
 
 int main() {
-	auto max = FMaxLenPlatform_M(1, 1, 1, 1, std::string("FF"), 5, 5, 5, 6);
+	//auto max = FMaxLenPlatform_M(1, 1, 1, 1, std::string("FF"), 5, 5, 5, 6);
+	auto max = FMaxLenPlatform_M(std::string("FF"));
 	std::cout << max;
 	return 0;	
 }

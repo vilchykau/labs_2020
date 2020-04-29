@@ -15,15 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="yp_assebly_2.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <MASM Include="sum_arr.asm">
-      <Filter>Исходные файлы</Filter>
-    </MASM>
-    <MASM Include="sum_fast_call.asm">
+    <MASM Include="main.asm">
       <Filter>Исходные файлы</Filter>
     </MASM>
   </ItemGroup>

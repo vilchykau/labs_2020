@@ -22,6 +22,6 @@ public:
 	void post_order(KTNode* p);
 	void post_order();
 	bool Length();
-	bool Length(KTNode* p, int& h);
+	bool Length(KTNode* p, int& radius);
 	friend istream& operator>>(istream& in, Tree& t);
 };

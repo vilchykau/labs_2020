@@ -15,16 +15,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="yp_assebly_2.cpp">
+    <ClInclude Include="Samework.h">
       <Filter>Исходные файлы</Filter>
-    </ClCompile>
+    </ClInclude>
+    <ClInclude Include="MainFun.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="References.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <MASM Include="sum_arr.asm">
+    <ClCompile Include="MainFun.cpp">
       <Filter>Исходные файлы</Filter>
-    </MASM>
-    <MASM Include="sum_fast_call.asm">
-      <Filter>Исходные файлы</Filter>
-    </MASM>
+    </ClCompile>
   </ItemGroup>
 </Project>

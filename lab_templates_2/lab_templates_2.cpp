@@ -11,7 +11,7 @@ constexpr complex_pair findRoots(double a, double b, double c) {
 
 int main()
 {
-    constexpr complex_pair ss = findRoots(1, -5, 6);
+    constexpr complex_pair ss = findRoots(1, 1, 16);
     constexpr int min_abs_root = _min(_abs(ss.first), _abs(ss.second));
 
     std::cout
